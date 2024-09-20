@@ -1,24 +1,8 @@
-type Age = number;
-type Name = string;
+// tuple : 특정위치에 특정타입이 있어야함
 
-type Player = {
-    readonly name: Name, // name 수정 못함
-    age?: Age
-}
-
-const playerMaker = (name:string) : Player => ({name})
-
-const nico = playerMaker("nico");
-nico.age = 12; 
-nico.name = "las"; // Cannot assign to 'name' because it is a read-only property
+// const player: [string, number, boolean] = ["nico", 12, false]
+// player[0] = 1 // Type 'number' is not assignable to type 'string'
 
 //---
-
-const numbers: readonly number[] = [1,2,3,4]
-numbers.push(1) // Property 'push' does not exist on type 'readonly number[]'
-
-// ---
-const names: readonly string[] = ["1", "2"];
-names.push("3") // Property 'push' does not exist on type 'readonly string[]'
-
-//---
+const player: readonly [string, number, boolean] = ["nico", 12, false]
+player[0] = "hi" // Cannot assign to '0' because it is a read-only property.
