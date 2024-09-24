@@ -1,22 +1,34 @@
-abstract class User {
-    constructor(
-        protected firstName: string,
-        protected lastName: string,
-        protected nickname: string
+type Words = {
+    [key:string]: string // property의 이름은 모르지만 type을 알때 사용하는 방법
+}
+
+
+class Dict {
+    private words: Words
+    constructor(){
+        this.words = {}
+    }
+    add(word:Word){
+        if(this.words[word.term] === undefined){
+            this.words[word.term] = word.def;
+        }
+    }
+    def(term:string){
+        return this.words[term]
+    }
+}
+
+class Word {
+    constructor (
+        public term : string,
+        public def : string
     ) {}
-    abstract getNickName(): void
-
-    getFullName(){
-        return `${this.firstName} ${this.lastName}`
-    }
 }
 
-class Player extends User {
-    getNickName(){
-        console.log(this.nickname)
-    }
-}
 
-const nico = new Player("nico", "last", "니꼬");
-nico.getFullName()
-nico.firstName // Property 'firstName' is protected and only accessible within class 'User' and its subclasses.
+const kimchi = new Word("kimchi", "한국의 음식");
+
+const dict = new Dict()
+
+dict.add(kimchi);
+dict.def("kimchi");
