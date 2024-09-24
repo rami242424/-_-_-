@@ -1,55 +1,40 @@
-// call signature shortcut
-type Add = (a: number, b: number) => number
 
-call signature longcut
-type Add = {
-    (a: number, b: number) : number
+type SuperPrint = {
+    (arr: number[]): void
+    (arr: boolean[]): void
+    (arr: string[]): void
+    
 }
 
-// 오버로딩?
-// 함수가 서로 다른 여러개의 call signature을 가지고 있을 때 발생.
-// 예시1
-type Add = {
-    (a: number, b: number) : number
-    (a: number, b: string) : number
-
-}
-const add : Add = (a, b) => {
-    if(typeof b === "string") return a
-    return a + b
+const superPrint: SuperPrint = (arr) => {
+    arr.forEach(i => console.log(i));
 }
 
-// 예시2
-type Config = {
-    path: string,
-    state: object
+superPrint([1, 2, 3, 4]);
+superPrint([true, false, true, true]);
+superPrint(["a", "b", "c"]);
+
+위의 방법처럼 하면 너무 길어진다 -> Generic을 이용하자 (확실한 타입을 모를 때 사용)
+
+#3.2 Polymorphism
+Generic 사용하기 // 제네릭 표시를 보고 타입스크립트가 타입을 유추한다.
+type SuperPrint = {
+    <TypePlaceHolder>(arr: TypePlaceHolder[]): TypePlaceHolder 
+    // step1 제네릭 사용할거라고 표시하기(</TypePlaceHolder>)
 }
-
-type Push = {
-    (path: string): void
-    (config: Config): void
+위의 코드 shortcut
+type SuperPrint = {
+    <T>(arr: T[]): T
 }
+const superPrint: SuperPrint = (arr) => arr[0];
 
-const push: Push = (config) => {
-    if (typeof config === "string") {
-        console.log(config); // string인 경우 처리
-    } else {
-        console.log(config.path); // Config 타입인 경우 처리
-    }
-};
+superPrint([1, 2, 3, 4]);
+superPrint([true, false, true, true]);
+superPrint(["a", "b", "c"]);
+superPrint([1, 5, false, "lala"]);
 
-
-// 예시3
-// call 파마리터의 개수도 다른 경우
-type Add = {
-    (a:number, b:number): number
-    (a:number, b:number, c:number): number
-}
-
-const add:Add = (a, b, c?:number) => {
-    if(c) return a + b + c
-    return a + b
-}
-
-add(1,2);
-add(1,2,3);
+// step2
+const a = superPrint([1, 2, 3, 4]); // const a: number
+const b = superPrint([true, false, true, true]); // const b: boolean
+const c = superPrint(["a", "b", "c"]); // const c: string
+const d = superPrint([1, 5, false, "lala"]); // const d: string | number | boolean
