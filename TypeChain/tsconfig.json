@@ -1,0 +1,10 @@
+{
+    "include": [ // JVS로 컴파일하고 싶은 디렉토리 추가
+        "src"
+    ],
+    "compilerOptions": {
+        "outDir": "build", // JVS 파일이 생성될 디렉토리 지정
+        "target": "es6", // 어떤 버전의 JVS로 TS를 컴파일 하고 싶은지 설정
+    }
+
+}
