@@ -1,50 +1,25 @@
-type Team = "red" | "blue" | "yellow";
-type Health = 1 | 5 | 10;
-
-// type과 interface
-
-// type
-// type Player = {
-//     nickname: string,
-//     team: Team,
-//     health: Health
+// interface version
+// interface User {
+//     name: string
 // }
 
-// interface
-interface Player {
-    nickname: string,
-    team: Team,
-    health: Health
+// interface Player extends User {   
+// }
+
+// const nico: Player = {
+//     name: "nico"
+// }
+
+// ---
+// type version
+type User = {
+    name: string
 }
 
-const nico : Player = {
-    nickname: "nico",
-    team : "blue",
-    health: 10
+type Player = User & {
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const nico: Player = {
+    name: "nico"
+}
