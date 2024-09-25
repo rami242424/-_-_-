@@ -1,13 +1,28 @@
+// type version : Duplicate Error
+type Player = {
+    name: string
+}
+
+type Player = { // Duplicate identifier 'User'
+    lastName: string
+}
+
+// -------------------------------
+// interface version
 interface User {
     name: string
-    // readonly name: string
 }
 
-interface Player extends User {   
+interface User {
+    lastName: string
 }
 
-const nico: Player = {
-    name: "nico"
+interface User {
+    health: number
 }
 
-nico.name = "lalalal" // readonly name: string : readonly 추가되면 출력 불가능해짐
+const nico: User = {
+    name: "nico",
+    lastName: "oh",
+    health: 100
+}
