@@ -47,6 +47,5 @@ const blockchain = new Blockchain();
 blockchain.addBlock("First one");
 blockchain.addBlock("Second one");
 blockchain.addBlock("Third one");
-blockchain.addBlock("Fourth one");
 
 console.log(blockchain.getBlocks());
