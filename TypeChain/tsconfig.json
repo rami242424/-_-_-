@@ -7,7 +7,6 @@
         "target": "es6", // 어떤 버전의 JVS로 TS를 컴파일 하고 싶은지 설정
         "lib": ["ES6", "DOM"], // 합쳐진 라이브러리의 정의 파일을 특정해주는 역할 // ex) ["ES6", "DOM"] : es6를 지원하는 서버와, dom 즉 브라우저 환경에서 코드를 실행시킬거다 라는뜻
         "strict": true,
-        // "allowJs": true,
         "esModuleInterop": true,
         "module" : "CommonJS",
     }
