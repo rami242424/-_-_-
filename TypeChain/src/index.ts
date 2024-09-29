@@ -37,9 +37,9 @@ class Blockchain {
         );
         this.blocks.push(newBlock);
     }
-    public getBlocks(){
-        return [...this.blocks];
-    }
+    // public getBlocks(){
+    //     return [...this.blocks];
+    // }
 } 
 
 const blockchain = new Blockchain();
