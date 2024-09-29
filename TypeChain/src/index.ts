@@ -1,6 +1,6 @@
 import * as crypto from "crypto";
 
-interface BlockShape {
+interface  BlockShape {
     hash: string;
     prevHash: string;
     height: number;
