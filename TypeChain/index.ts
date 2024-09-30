@@ -1,7 +1,7 @@
 type Age = number;
 type Name = string;
 type Player = {
-    name : Name,
+    readonly name : Name,
     age ?: Age
 }
 
@@ -33,3 +33,4 @@ const playerMaker2 = (name: string) : Player => {
 
 const nico2 = playerMaker2("rami");
 nico2.age = 15;
+nico2.name = "bomi"
