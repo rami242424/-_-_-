@@ -5,10 +5,13 @@ type Player = {
     age?: Age
 }
 
-function playerMaker (name: string) : Player{
+function playerMaker1 (name: string) : Player{
     return{
         name
     }
 }
-const nico = playerMaker("nico")
+// 화살표 함수
+const playerMaker2 = (name:string) : Player => ({name})
+
+const nico = playerMaker1("nico")
 nico.age = 12
