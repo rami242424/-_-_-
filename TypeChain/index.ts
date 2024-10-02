@@ -1,22 +1,13 @@
-// unknown : 변수의 타입을 미리 알지 못 할 때 사용
-
-// void : 아무것도 return하지 않는 함수를 대상으로 사용
-function hello(){ // function hello(): void
-    console.log("x");
+// call signature
+// 1) function 함수
+function add1(a:number, b:number){ // function add(a: number, b: number): number
+    return a + b
 }
 
-//never : 1) 함수가 절대 return 하지 않을 때 발생
-function hello2():never{
-    // return "x";
-    throw new Error("X") // return하지 않고 오류를 발생시키는 함수!
-}
-//never : 2) 타입이 두가지 일 수도 있는 상황에서 발생
-function hello3(name: string|number){
-    if(typeof name === "string"){
-        name // (parameter) name: string
-    } else if(typeof name === "number"){
-        name // (parameter) name: number
-    } else {
-        name // (parameter) name: never -> name은 string이거나 number 둘중에 하나라서!
-    }
-}
+// 2) 화살표 함수
+const add2 = (a:number, b:number) => a + b // const addd: (a: number, b: number) => number
+
+// call signature 선언하는 방법
+type Add = (a:number, b:number) => number;
+
+const add: Add = (a,b) => a + b // type Add = (a: number, b: number) => number
