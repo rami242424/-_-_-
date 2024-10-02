@@ -1,14 +1,10 @@
 type SuperPrint = {
-    (arr: number[]):void
-    (arr: boolean[]):void
+    <T>(arr: T[]): T
 }
 
-const superPrint: SuperPrint = (arr) => {
-    arr.forEach(i => console.log(i))
-}
+const superPrint: SuperPrint = (arr) => arr[0]
 
-superPrint([1,2,3,4])
-superPrint([true, false, false])
-superPrint(["a", "b"]) // Generic을 통해 간결하게 만들어보자
-
-// Generic : call signature을 작성 하려고 하는데 확실한 타입을 모를 떄
+const a = superPrint([1,2,3,4])
+const b = superPrint([true, false, false])
+const c = superPrint(["a", "b"])
+const d = superPrint([1, 2, "a", "b", true])
