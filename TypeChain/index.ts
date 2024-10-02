@@ -1,14 +1,37 @@
-// 아래 두 함수 합쳐놓은 것
-function superPrint<T>(a: T[]){
-    return a[0]
+type Player<E> = {
+    name:string
+    extraInfo: E
 }
 
-// type SuperPrint = {
-//     <T>(arr: T[]): T
+// const nico : Player<{favFood:string}> = {
+//     name: "nico",
+//     extraInfo: {
+//         favFood: "kimchi"
+//     }
 // }
-// const superPrint: SuperPrint = (arr) => arr[0]
 
-const a = superPrint<number>([1,2,3,4])
-const b = superPrint([true, false, false])
-const c = superPrint(["a", "b"])
-const d = superPrint([1, 2, "a", "b", true])
+// 위 코드를 둘로 나눈것 1
+// type NicoPlayer = Player<{favFood:string}>
+// const nico : NicoPlayer = {
+//     name: "nico",
+//     extraInfo: {
+//         favFood: "kimchi"
+//     }
+// }
+
+// 위 코드를 둘로 나눈것 2
+type NicoPlayer = Player<NicoExtra>
+type NicoExtra = {
+    favFood: string
+}
+const nico : NicoPlayer = {
+    name: "nico",
+    extraInfo: {
+        favFood: "kimchi"
+    }
+}
+
+const lynn : Player<null> = {
+    name: "lynn",
+    extraInfo: null
+}
