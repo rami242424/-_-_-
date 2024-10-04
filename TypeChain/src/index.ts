@@ -25,3 +25,36 @@ class Block implements BlockShape{
         return crypto.createHash("sha256").update(toHash).digest("hex");
     }
 }
+
+class BlockChain {
+    private blocks: Block[];
+    constructor(){
+        this.blocks = [];
+    }
+    private getPrevHash(){
+        if(this.blocks.length === 0) return ""
+        return this.blocks[this.blocks.length - 1].hash
+    }
+    public addBlock(data: string){
+        const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data) // 새로운 블록 생성
+        this.blocks.push(newBlock);
+    }
+    // 블록에 접근할 수 있는 함수
+    public getBlocks(){
+        // return this.blocks; // 이렇게하면 해킹가능(다른사람이 수정가능)
+        return [...this.blocks];
+    }
+}
+
+const blockchain = new BlockChain();
+
+blockchain.addBlock("first one");
+blockchain.addBlock("second one");
+blockchain.addBlock("third one");
+blockchain.addBlock("forth one");
+
+// 짭 데이터
+blockchain.getBlocks().push(new Block("가짜지롱", 79787, "해킹됐다"))
+
+// 모든 블록을 반환
+console.log(blockchain.getBlocks());
