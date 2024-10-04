@@ -3,9 +3,12 @@
     "compilerOptions": {
         "outDir": "build", // 자바스크립트 파일이 생성 될 디렉터리를 지정
         "target": "ES6", // target은 어떤 버전의 자바스크립트로 > 타입스크립트를 컴파일 하고 싶은지 나타냄
-        "lib": ["ES6" ,"DOM"], // 자바스크립트의 어떤 버전이 그 환경에서 사용되는지
+        "lib": ["ES6"],
+        // "lib": ["ES6" ,"DOM"], // 자바스크립트의 어떤 버전이 그 환경에서 사용되는지
         "strict": true,
-        "allowJs": true,
+        // "allowJs": true, // TS와 JVS를 같이 사용할 수 있게 된다.
+        "esModuleInterop": true,
+        "module": "CommonJS", //브라우저 앱을 만든다면 umd 선택
         
     }
 }
