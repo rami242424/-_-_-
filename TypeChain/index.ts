@@ -10,4 +10,4 @@ const nico : Player = {
     nickname: "nico",
     team: "blue",
     health: 4
-}
+}    
